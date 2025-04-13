@@ -6,7 +6,7 @@ class ChatService:
         Initialize the ChatService with an optional API key.
         If api_key is not provided, we try to read from environment var.
         """
-        self.api_key: str = os.environ.get("GOOGLE_PALM_API_KEY", "")
+        self.api_key: str = api_key or os.environ.get("GOOGLE_PALM_API_KEY", "")
         if not self.api_key:
             raise ValueError("Google PaLM (Gemini) API key not provided or found in environment.")
 
