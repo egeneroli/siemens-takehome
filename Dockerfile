@@ -14,9 +14,8 @@ RUN pip install --no-cache-dir -r requirements.txt --default-timeout=100
 # Copy the current directory contents into the container at /app
 COPY src .
 
-# Expose ports
-EXPOSE 8000
-EXPOSE 8080
+# Expose port
+EXPOSE 5000
 
 # Run the Flask app
 CMD ["python", "-m", "app.main"]

@@ -1,3 +1,10 @@
+"""
+main.py
+
+This module initializes and runs the Flask application.
+It sets up the configuration, registers routes, and starts the server.
+"""
+
 from flask import Flask
 from app.routes import ChatController
 from app.config import Env
@@ -13,4 +20,4 @@ ChatController(app)
 
 # run the app
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=8000, debug=True)
+    app.run(host=Env.HOST, port=Env.PORT, debug=Env.DEBUG)

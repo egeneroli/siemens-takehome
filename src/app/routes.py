@@ -1,4 +1,10 @@
-# src/app/controllers/chat_controller.py
+"""
+routes.py
+
+This module defines the routes for the chat application.
+It contains the ChatController class, which manages the chat endpoints,
+including the home and chat routes for handling user interactions.
+"""
 
 from flask import Blueprint, request, jsonify, Flask, Response
 from typing import Any
@@ -12,6 +18,14 @@ class ChatController:
     """
 
     def __init__(self, app: Flask) -> None:
+        """
+        Initialize the ChatController with a Flask app.
+
+        Parameters
+        ----------
+        app : Flask
+            The Flask application instance to register the blueprint with.
+        """
         # Create a ChatService instance
         self.chat_service: ChatService = ChatService()
 
@@ -25,6 +39,9 @@ class ChatController:
         """
         GET /
         Returns a welcome message for the chatbot.
+
+        Returns: tuple[str, int]
+            A tuple containing the welcome message and HTTP status code.
         """
         return "Welcome to the Chatbot", 200
 
@@ -32,16 +49,23 @@ class ChatController:
         """
         POST /chat
         Accepts JSON with 'prompt' key and returns a JSON response from the LLM.
+
+        Returns: tuple[Response, int]
+            A tuple containing the JSON response and HTTP status code.
         """
         PROMPT_KEY: str = "prompt"
         try:
+            # Parse JSON request data
             data: dict[str, Any] = request.get_json()
             if not data or PROMPT_KEY not in data:
                 return jsonify({"error": f"Please provide '{PROMPT_KEY}' in the request body."}), 400
 
+            # Get user prompt from request data
             user_prompt: str = data[PROMPT_KEY]
+            # Get response from chat service
             response_text: str = self.chat_service.get_reply(user_prompt)
             return jsonify({"response": response_text}), 200
 
         except Exception as e:
+            # Return error response
             return jsonify({"error": str(e)}), 500
