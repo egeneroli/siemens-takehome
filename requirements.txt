@@ -1,4 +1,6 @@
 flask
 langchain
 streamlit
-requests
+langchain-google-genai
+google-generativeai
+

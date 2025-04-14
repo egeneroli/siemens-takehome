@@ -1,7 +1,11 @@
 # Technical Interview - Takehome Project
 
 ## Objective
-Develop a lightweight conversational AI service using Langchain. The service should expose at least one API endpoint for chat interactions, run a Flask application, and be containerized in Docker. A user should be able to ask a question using the endpoint built in Flask, and recieve an answer from an LLM using Langchain.
+Develop a lightweight conversational AI service using Langchain. 
+The service should expose at least one API endpoint for chat interactions, 
+run a Flask application, and be containerized in Docker. 
+A user should be able to ask a question using the endpoint built in Flask, 
+and receive an answer from an LLM using Langchain.
 
 ## Key Technologies
 * Flask
@@ -37,6 +41,23 @@ Setup instructions, including:
 * How to build and run the Docker container.
 
 * How to run tests 
+
+### Running the Application with Docker Compose:
+
+1. Ensure you have Docker and Docker Compose installed on your machine.
+2. Navigate to the project directory.
+3. Run the following command to build and start the containers:
+   
+   ```bash
+   docker-compose up --build
+   ```
+4. Access the application at `http://localhost:5000`.
+
+5. To stop the application, press `CTRL+C` in the terminal running Docker Compose, or run:
+   
+   ```bash
+   docker-compose down
+   ```
 
 Feel free to append to this README file as well so we can easily view the instructions for reference if needed.
 

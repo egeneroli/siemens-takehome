@@ -11,13 +11,13 @@ COPY requirements.txt ./
 RUN pip install --no-cache-dir -r requirements.txt
 
 # Copy the current directory contents into the container at /app
-COPY . .
+COPY src .
 
 # Expose ports
 EXPOSE 8000
 EXPOSE 8080
 
 # Run the Flask app
-# CMD ["python", "src/app/app.py"]
+CMD ["python", "-m", "app.main"]
 # Run the Flask and Streamlit apps
-CMD ["sh", "-c", "python app.py & streamlit run streamlit_chat.py --server.port 8000 && wait"]
+# CMD ["sh", "-c", "python main.py & streamlit run streamlit_chat.py --server.port 8000 && wait"]

@@ -1,5 +1,5 @@
 import streamlit as st
-from langchain_integration.chat_service import ChatService
+from chat.service import ChatService
 
 # Initialize ChatService once
 chat_service: ChatService = ChatService()

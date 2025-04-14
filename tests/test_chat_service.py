@@ -1,5 +1,5 @@
 import unittest
-from langchain_integration.chat_service import ChatService
+from chat.service import ChatService
 
 class TestChatService(unittest.TestCase):
     def setUp(self):
