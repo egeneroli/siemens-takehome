@@ -46,3 +46,23 @@ docker compose up
 ```
 
 The bind mount will ensure your local code changes are immediately reflected in the container. (On most systems, Windows has been known to have issues, for instance.)
+
+## API Endpoints
+
+### GET /
+Returns a welcome message for the chatbot.
+
+### POST /chat
+- **Request Body**: JSON with a `prompt` key.
+- **Response**: JSON containing the chatbot's response.
+
+### Usage Example
+
+To interact with the chatbot, you can use tools like `curl` or Postman. For example, using `curl`:
+
+```bash
+# Send a prompt to the chatbot
+curl -X POST http://localhost:5000/chat -H "Content-Type: application/json" -d '{"prompt": "Hello, chatbot!"}'
+```
+
+This will return a JSON response with the chatbot's reply.
