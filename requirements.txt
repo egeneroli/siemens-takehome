@@ -1,5 +1,4 @@
 flask
 langchain
-streamlit
 langchain-google-genai
 google-generativeai
