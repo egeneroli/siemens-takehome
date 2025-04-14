@@ -6,7 +6,7 @@ class TestChatService(unittest.TestCase):
         self.service = ChatService()
 
     def test_get_response(self):
-        response = self.service.get_response('Hello')
+        response = self.service.get_reply('Hello')
         self.assertIsInstance(response, str)
 
 if __name__ == '__main__':
