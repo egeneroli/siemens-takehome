@@ -1,8 +1,8 @@
 # src/app/controllers/chat_controller.py
 
-from flask import Blueprint, request, jsonify, Flask
+from flask import Blueprint, request, jsonify, Flask, Response
 from typing import Any
-from chat.service import ChatService
+from chat.chat_service import ChatService
 
 
 class ChatController:
@@ -28,16 +28,20 @@ class ChatController:
         """
         return "Welcome to the Chatbot", 200
 
-    def chat(self) -> tuple[dict, int]:
+    def chat(self) -> tuple[Response, int]:
         """
         POST /chat
         Accepts JSON with 'prompt' key and returns a JSON response from the LLM.
         """
         PROMPT_KEY: str = "prompt"
-        data: dict[str, Any] = request.get_json()
-        if not data or PROMPT_KEY not in data:
-            return jsonify({"error": f"Please provide '{PROMPT_KEY}' in the request body."}), 400
+        try:
+            data: dict[str, Any] = request.get_json()
+            if not data or PROMPT_KEY not in data:
+                return jsonify({"error": f"Please provide '{PROMPT_KEY}' in the request body."}), 400
 
-        user_prompt: str = data[PROMPT_KEY]
-        response_text: str = self.chat_service.get_reply(user_prompt)
-        return jsonify({"response": response_text}), 200
+            user_prompt: str = data[PROMPT_KEY]
+            response_text: str = self.chat_service.get_reply(user_prompt)
+            return jsonify({"response": response_text}), 200
+
+        except Exception as e:
+            return jsonify({"error": str(e)}), 500

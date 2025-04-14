@@ -1,5 +1,5 @@
 import unittest
-from chat.service import ChatService
+from chat.chat_service import ChatService
 
 class TestChatService(unittest.TestCase):
     def setUp(self):

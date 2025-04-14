@@ -13,36 +13,36 @@ Clone the repository:
    git clone git@github.com:egeneroli/siemens-takehome.git
    ```
 
+### Environment Setup
+
+Before running the application, you need to set up the required environment variables:
+
+1. Create a `.env` file in the root directory of the project
+2. Add the following environment variables:
+   ```bash
+   GOOGLE_API_KEY=your_google_api_key_here
+   ```
+
+You'll need to obtain a Google API key with access to the Gemini model. Never commit your API key to version control.
+
 ### Running the Application with Docker Compose:
 
-To run the application using Docker Compose, follow these steps:
+The application uses Docker Compose with bind mounts for development, which means your local code changes are immediately reflected in the container without requiring rebuilds.
 
-1. Ensure you have Docker and Docker Compose installed on your machine.
-2. Navigate to the project directory.
-3. Run the following command to build and start the containers:
-   
-   ```bash
-   docker compose up --build
-   ```
-4. Access the application at `http://localhost:5000`.
-5. To stop the application, use `docker compose down`. 
+#### First Time Setup / After Dockerfile Changes
 
-These steps will help you get the application running smoothly in a containerized environment.
+When you first clone the repository or when the Dockerfile / requirements.txt changes, you'll need to build the images:
 
-### Docker Setup
+```bash
+docker compose up --build
+```
 
-If you prefer to run the application using standard Docker commands, you can follow these steps:
+#### Regular Development
 
-1. Build the Docker image:
-   ```bash
-   docker build -t chatbot .
-   ```
+For regular development, you can just run:
 
-2. Run the Docker container:
-   ```bash
-   # run, map ports to expose externally, set environment variable for API key
-   docker run -p 8000:8000 -e GOOGLE_API_KEY=$GOOGLE_API_KEY chatbot
-   
-   # with dev volume to avoid rebuild every time code changes
-   docker run -v $(pwd)/src:/app -p 8000:8000 -e GOOGLE_API_KEY=$GOOGLE_API_KEY chatbot
-   ```
+```bash
+docker compose up
+```
+
+The bind mount will ensure your local code changes are immediately reflected in the container. (On most systems, Windows has been known to have issues, for instance.)
