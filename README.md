@@ -66,7 +66,7 @@ To interact with the chatbot, you can use tools like `curl` or Postman. For exam
 
 ```bash
 # Send a prompt to the chatbot
-curl -X POST http://localhost:5000/chat -H "Content-Type: application/json" -d '{"prompt": "Hello, chatbot!"}'
+curl -X POST http://localhost:8080/chat -H "Content-Type: application/json" -d '{"prompt": "Hello, chatbot!"}'
 ```
 
 This will return a JSON response with the chatbot's reply.

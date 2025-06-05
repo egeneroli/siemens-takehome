@@ -16,4 +16,4 @@ class Env:
     DEBUG: bool = os.environ.get("DEBUG", "False").lower() == "true"  # Debug mode flag.
     LANGUAGE_MODEL: str = os.environ.get("LANGUAGE_MODEL", "gemini-2.0-flash")  # The language model to use.
     HOST: str = os.environ.get("HOST", "0.0.0.0")  # The host address for the app.
-    PORT: int = int(os.environ.get("PORT", "5000"))  # The port number for the app.
+    PORT: int = int(os.environ.get("PORT", "8080"))  # The port number for the app.

@@ -10,7 +10,7 @@ from langchain.chains import ConversationChain, LLMChain
 from langchain.memory import ConversationBufferMemory
 from langchain.prompts import PromptTemplate
 from langchain_google_genai.chat_models import ChatGoogleGenerativeAI
-from app.config import Env
+from config import Env
 
 class ChatService:
     """

@@ -6,8 +6,8 @@ It sets up the configuration, registers routes, and starts the server.
 """
 
 from flask import Flask
-from app.routes import ChatController
-from app.config import Env
+from chat_controller import ChatController
+from config import Env
 
 # create the Flask app
 app: Flask = Flask(__name__)

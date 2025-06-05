@@ -1,5 +1,5 @@
 """
-routes.py
+chat_controller.py
 
 This module defines the routes for the chat application.
 It contains the ChatController class, which manages the chat endpoints,
@@ -8,7 +8,7 @@ including the home and chat routes for handling user interactions.
 
 from flask import Blueprint, request, jsonify, Flask, Response
 from typing import Any
-from chat.chat_service import ChatService
+from chat_service import ChatService
 
 
 class ChatController:
