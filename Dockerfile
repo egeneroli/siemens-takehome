@@ -10,14 +10,11 @@ COPY requirements.txt ./
 # Install the dependencies
 RUN pip install --no-cache-dir -r requirements.txt --default-timeout=100
 
-
 # Copy the current directory contents into the container at /app
 COPY src .
 
 # Expose port
-EXPOSE 5000
+EXPOSE 8080
 
 # Run the Flask app
-CMD ["python", "-m", "app.main"]
-# Run the Flask and Streamlit apps
-# CMD ["sh", "-c", "python main.py & streamlit run streamlit_chat.py --server.port 8000 && wait"]
+CMD ["python", "-m", "main"]
